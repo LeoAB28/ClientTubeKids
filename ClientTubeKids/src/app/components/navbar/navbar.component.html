@@ -1,4 +1,7 @@
 <nav class="navbar navbar-light" style="background-color: #ff6666;">
-  <a class="navbar-brand">Navbar</a>
-  <a class="navbar-brand" routerLink="login">Login</a>
+	<a class="navbar-brand">TubeKids</a>
+	<div>
+		<a class="navbar-brand" routerLink="login" *ngIf="!loggedIn">Login</a>
+		<a class="navbar-brand" href="#" (click)="logout($event)" *ngIf="loggedIn">Login and Logout</a>
+	</div>
 </nav>

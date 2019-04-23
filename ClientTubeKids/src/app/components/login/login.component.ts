@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { JarwisService } from '../../Services/jarwis.service';
-import { TokenService } from '../../Services/token.service';
+import { JarwisService } from '../../services/jarwis.service';
+import { TokenService } from '../../services/token.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   public error = null;
 
-  constructor(private Jarwis: JarwisService, private Token: TokenService, private router: Router) { }
+  constructor(private Jarwis: JarwisService, private Token: TokenService, private router: Router, private Auth : AuthService) { }
 
   onSubmit(){
   	  this.Jarwis.login(this.form).subscribe(
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data){
     this.Token.handle(data.access_token);
+    this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/home');
   }
 
