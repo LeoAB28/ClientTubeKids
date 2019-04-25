@@ -32,4 +32,8 @@ export class JarwisService {
 	updateProfile(data){
 		return this.http.put(`${this.baseUrl}/putProfile`, data)
 	}
+
+	addVideo(data){
+		return this.http.post(`${this.baseUrl}/addVideo`, data)
+	}
 }

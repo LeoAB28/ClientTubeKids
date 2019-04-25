@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
+import { AddVideoComponent } from './components/add-video/add-video.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddProfileComponent } from './components/add-profile/add-profile.compon
   SignupComponent,
   HomeComponent,
   ProfilesComponent,
-  AddProfileComponent
+  AddProfileComponent,
+  AddVideoComponent
   ],
   imports: [
   BrowserModule,

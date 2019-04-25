@@ -29,10 +29,7 @@ export class ProfilesComponent implements OnInit {
 
 	constructor(private Jarwis: JarwisService, private router: Router) {
 
-		this.Jarwis.getProfiles(this.get()).subscribe(
-			data => this.handleResponse(data),
-			error => this.handleError(error)
-			);
+
 	}
 
 	handleError(error){
@@ -53,7 +50,7 @@ export class ProfilesComponent implements OnInit {
 			data => this.handleResponseMessage(data),
 			error => this.handleError(error)
 			);
-		window.location.reload();
+		//window.location.reload();
 	}
 
 	update($event, profile){
@@ -72,7 +69,6 @@ export class ProfilesComponent implements OnInit {
 			data => this.handleResponseMessage(data),
 			error => this.handleError(error)
 			);
-		console.log(this.form);
 	}
 
 	get() {
@@ -80,5 +76,9 @@ export class ProfilesComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.Jarwis.getProfiles(this.get()).subscribe(
+			data => this.handleResponse(data),
+			error => this.handleError(error)
+			);
 	}
 }
