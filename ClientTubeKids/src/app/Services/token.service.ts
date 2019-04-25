@@ -1,56 +1,54 @@
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
- @Injectable({
- 	providedIn: 'root'
- })
- export class TokenService {
+@Injectable({
+	providedIn: 'root'
+})
+export class TokenService {
+	private iss = {
+		login: 'http://localhost:8000/api/login',
+		signup: 'http://localhost:8000/api/signup'
+	};
 
- 	private iss = {
- 		login : 'http://localhost:8000/api/login',
- 		signup : 'http://localhost:8000/api/signup'
- 	}
+	constructor() { }
 
- 	constructor() { }
+	handle(token, id) {
+		this.set(token, id);
+	}
 
- 	handle(token){
- 		this.set(token);
- 	}
+	set(token, id) {
+		localStorage.setItem('token', token);
+		localStorage.setItem('id', id);
+	}
+	get() {
+		return localStorage.getItem('token');
+	}
 
- 	set(token){
- 		localStorage.setItem('token', token);
- 	}
+	remove() {
+		localStorage.removeItem('token');
+		localStorage.removeItem('id');
+	}
 
- 	get(){
- 		return localStorage.getItem('token');
- 	}
+	isValid() {
+		const token = this.get();
+		if (token) {
+			const payload = this.payload(token);
+			if (payload) {
+				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
+			}
+		}
+		return false;
+	}
 
- 	remove(){
- 		localStorage.removeItem('token');
- 	}
+	payload(token) {
+		const payload = token.split('.')[1];
+		return this.decode(payload);
+	}
 
- 	isValid(){
- 		const token = this.get();
- 		if(token){
+	decode(payload) {
+		return JSON.parse(atob(payload));
+	}
 
- 			const payload = this.payload(token);
- 			if(payload){
- 				return Object.values(this.iss).indexOf(payload.iss) > -1 ? true: false;
- 			}
- 		}
-
- 		return false;
- 	}
-
- 	payload(token){
- 		const payload = token.split('.')[1];
- 		return this.decode(payload);
- 	}
-
- 	decode(payload){
- 		return JSON.parse(atob(payload));
- 	}
-
- 	loggedIn(){
- 		return this.isValid();
- 	}
- }
+	loggedIn() {
+		return this.isValid();
+	}
+}

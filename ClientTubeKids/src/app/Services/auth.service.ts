@@ -4,16 +4,16 @@ import { TokenService } from './token.service';
 
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class AuthService {
-
-	private loggedIn = new BehaviorSubject< boolean >(this.Token.loggedIn());
+	private loggedIn = new BehaviorSubject<boolean>(this.Token.loggedIn());
 	authStatus = this.loggedIn.asObservable();
 
-	changeAuthStatus(value : boolean){
-		this.loggedIn.next(value)
+	changeAuthStatus(value: boolean) {
+		this.loggedIn.next(value);
 	}
 
-  constructor(private Token: TokenService) { }
+	constructor(private Token: TokenService) { }
+
 }

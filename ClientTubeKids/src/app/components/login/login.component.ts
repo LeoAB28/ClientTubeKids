@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   	email: null,
 
   	password: null,
-  };
+  }
 
   public error = null;
 
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(data){
-    this.Token.handle(data.access_token);
+    this.Token.handle(data.access_token, data.id);
     this.Auth.changeAuthStatus(true);
     this.router.navigateByUrl('/home');
   }

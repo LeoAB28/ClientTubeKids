@@ -1,0 +1,107 @@
+<br>
+
+
+
+<br>
+
+<div class="container" style="display: flex; flex-direction: row; justify-content: space-between; width: 2000px;">
+	<div>
+		<table class="table" style="width: 1000px;" >
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Full Name</th>
+					<th scope="col">User Name</th>
+					<th scope="col">Key</th>
+					<th scope="col">Age</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let profile of profiles">
+					<td style="width: 400px;"><h4>{{profile.name}}</h4></td>
+					<td style="width: 400px;"><h4>{{profile.user_name}}</h4></td>
+					<td style="width: 400px;"><h4>{{profile.key}}</h4></td>
+					<td style="width: 400px;"><h4>{{profile.age}}</h4></td>
+					<td style="width: 400px;">
+						<div style="display: flex; flex-direction: row; justify-content: flex-end;">
+							<a class="navbar-brand alert-link" (onclick)="delete($event)"><button type="button" (click)="delete($event, 				profile.id)" class="btn btn-danger" style=""><i class="far fa-trash-alt"></i></button></a>
+
+							<a class="navbar-brand alert-link" (onclick)="update($event)"><button type="button" (click)="update($event, profile)" class="btn btn-secondary"><i class="fas fa-cog"></i></button></a>
+						</div>  
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<a style="font-family: Comic Sans MS" href="add-profile"><button type="button" style="height: 50px; width: 150px; margin-left: 20px;" class="btn btn-primary">Add Profile</button></a>
+	</div>
+</div>
+
+<br>
+
+<form #addForm=ngForm (ngSubmit)="onSubmit()" *ngIf="forms">
+	<div class="mt-4 col-8 offset-2" style="display: flex; flex-direction: row; justify-content: space-between; width: 2000px;">
+		<div class="card">
+			<div class="card-header">Uptade Profile</div>
+			<div class="card-body">
+
+				<div class="form-inline">
+
+					<div class="form-group row" style="display: flex; flex-direction: column; justify-content: space-between;">
+						<label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="name" class="form-control" id="inputName3" placeholder="Full Name" [(ngModel)]="form.name" required>
+							<div class="alert alert-danger" [hidden]="!error.name">
+								{{error.name}}
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row" style="display: flex; flex-direction: column;">
+						<label for="inputFirst_last_name3" class="col-sm-2 col-form-label">User</label>
+						<div class="col-sm-10">
+							<input type="text" name="user_name" class="form-control" id="inputuser_name3" placeholder="User Name" [(ngModel)]="form.user_name" required>
+							<div class="alert alert-danger" [hidden]="!error.user_name">
+								{{error.user_name}}
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group row" style="display: flex; flex-direction: column;">
+						<label for="inputkey3" class="col-sm-2 col-form-label">Key</label>
+						<div class="col-sm-10">
+							<input type="number" name="key" class="form-control" id="inputkey3" placeholder="Key" [(ngModel)]="form.key" required>
+							<div class="alert alert-danger" [hidden]="!error.key">
+								{{error.key}}
+							</div>
+						</div>
+					</div>
+
+
+					<div class="form-group row" style="display: flex; flex-direction: column;">
+						<label for="inputAge3" class="col-sm-2 col-form-label">Age</label>
+						<div class="col-sm-10">
+							<input type="number" name="age" class="form-control" id="inputage3" placeholder="Age" [(ngModel)]="form.age" required>
+							<div class="alert alert-danger" [hidden]="!error.age">
+								{{error.age}}
+							</div>
+						</div>
+					</div>
+					
+
+				</div>
+
+			</div>
+		</div>
+		<div class="form-group row"  style="display: flex; flex-direction: column;">
+			<div class="col-sm-10 offset-2">
+				<button type="submit" style="height: 50px; width: 150px; margin-left: 20px;" class="btn btn-success">Save</button>
+			</div>
+			<div class="col-sm-10 offset-2">
+				<a style="font-family: Comic Sans MS" href="profiles"><button type="button" style="height: 50px; width: 150px; margin-left: 20px;" class="btn btn-danger">Cancel</button></a>
+			</div>
+		</div>
+	</div>
+</form>

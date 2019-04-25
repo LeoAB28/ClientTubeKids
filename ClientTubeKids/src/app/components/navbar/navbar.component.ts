@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 	logout(event: MouseEvent){
 		event.preventDefault();
 		this.Token.remove();
-		this.Auth.changeAuthStatus(true);
+		this.Auth.changeAuthStatus(false);
 		this.router.navigateByUrl('/login');
 	}
 }

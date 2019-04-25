@@ -16,4 +16,20 @@ export class JarwisService {
 	login(data){
 		return this.http.post(`${this.baseUrl}/login`, data)
 	}
+
+	getProfiles(id){
+		return this.http.get(this.baseUrl+'/profiles/'+id)
+	}
+
+	addProfile(data){
+		return this.http.post(`${this.baseUrl}/addProfile`, data)
+	}
+
+	delteProfile(id){
+		return this.http.get(this.baseUrl+'/profileDelete/'+id)
+	}
+
+	updateProfile(data){
+		return this.http.put(`${this.baseUrl}/putProfile`, data)
+	}
 }
