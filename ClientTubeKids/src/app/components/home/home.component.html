@@ -5,12 +5,21 @@
 <br>
 <br>
 
-
 <div>
 	<youtube-player [videoId]="id" (ready)="savePlayer($event)" (change)="onStateChange($event)"></youtube-player>
 </div>
 
+<div class="d-inline-flex p-3 " *ngFor="let playlist of playlists">
 
-
-
-
+	<div class="d-flex align-items-center card align-self-start " style="width: 18rem;">
+		<br>
+		<img src="assets/img/kids.png" class="card-img-top" style="height:140px;width:170px;" alt="...">
+		<div class="card-body" style="height:80px">
+			<h5 class="card-title">{{playlist.name}}</h5>
+		</div>
+		<div class="card-body">
+			<button class="btn btn-primary mr-2" (click)="play(playlist.url)">Play</button>
+			<button class="btn btn-danger" (click)="delete(playlist.id)">Delete</button>
+		</div>
+	</div>
+</div>

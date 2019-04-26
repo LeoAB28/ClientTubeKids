@@ -36,4 +36,13 @@ export class JarwisService {
 	addVideo(data){
 		return this.http.post(`${this.baseUrl}/addVideo`, data)
 	}
+
+	getVideo(id){
+		return this.http.get(this.baseUrl+'/getVideo/'+id)
+	}
+
+	deleteVideo(id){
+		return this.http.delete(`${this.baseUrl}/deleteVideo/`+id)
+	}
 }
+
