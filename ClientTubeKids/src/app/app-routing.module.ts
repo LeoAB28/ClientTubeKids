@@ -8,6 +8,7 @@ import { BeforeLoginService } from './Services/before-login.service';
 import { AfterLoginService } from './Services/after-login.service';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { AddVideoComponent } from './components/add-video/add-video.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 
 const appRoutes: Routes =[
@@ -43,6 +44,12 @@ const appRoutes: Routes =[
 {
 	path: 'add-video',
 	component: AddVideoComponent,
+	canActivate: [AfterLoginService]
+},
+
+{
+	path: 'videos',
+	component: VideosComponent,
 	canActivate: [AfterLoginService]
 },
 

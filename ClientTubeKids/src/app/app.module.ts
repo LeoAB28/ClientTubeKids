@@ -12,6 +12,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { ProfilesComponent } from './components/profiles/profiles.component';
 import { AddProfileComponent } from './components/add-profile/add-profile.component';
 import { AddVideoComponent } from './components/add-video/add-video.component';
+import { VideosComponent } from './components/videos/videos.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddVideoComponent } from './components/add-video/add-video.component';
   HomeComponent,
   ProfilesComponent,
   AddProfileComponent,
-  AddVideoComponent
+  AddVideoComponent,
+  VideosComponent
   ],
   imports: [
   BrowserModule,

@@ -26,7 +26,7 @@ export class JarwisService {
 	}
 
 	delteProfile(id){
-		return this.http.get(this.baseUrl+'/profileDelete/'+id)
+		return this.http.delete(`${this.baseUrl}/deleteProfile/`+id)
 	}
 
 	updateProfile(data){
@@ -38,11 +38,17 @@ export class JarwisService {
 	}
 
 	getVideo(id){
-		return this.http.get(this.baseUrl+'/getVideo/'+id)
+		return this.http.get(`${this.baseUrl}/getVideo/`+id)
 	}
 
 	deleteVideo(id){
 		return this.http.delete(`${this.baseUrl}/deleteVideo/`+id)
 	}
+
+	updateVideo(data){
+		return this.http.put(`${this.baseUrl}/putVideo`, data)
+	}
 }
+
+
 

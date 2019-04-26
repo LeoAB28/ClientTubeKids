@@ -6,6 +6,7 @@
 	
 	<div>
 		<a class="navbar-brand" style="font-family: Comic Sans MS" routerLink="login" *ngIf="!loggedIn">Login</a>
+		<a class="navbar-brand" style="font-family: Comic Sans MS" routerLink="videos" *ngIf="loggedIn">Videos</a>
 		<a class="navbar-brand" style="font-family: Comic Sans MS" routerLink="profiles" *ngIf="loggedIn">Profiles</a>
 		<a class="navbar-brand alert-link" style="color: #000080; font-family: Comic Sans MS" href="login" (click)="logout($event)" *ngIf="loggedIn">Logout</a>
 	</div>

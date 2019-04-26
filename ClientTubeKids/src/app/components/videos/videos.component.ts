@@ -2,26 +2,26 @@ import { Component, OnInit } from '@angular/core';
 import { JarwisService } from '../../services/jarwis.service';
 import { Router } from '@angular/router';
 
+
 @Component({
-	selector: 'app-profiles',
-	templateUrl: './profiles.component.html',
-	styleUrls: ['./profiles.component.css']
+	selector: 'app-videos',
+	templateUrl: './videos.component.html',
+	styleUrls: ['./videos.component.css']
 })
-export class ProfilesComponent implements OnInit {
+export class VideosComponent implements OnInit {
+
 
 
 	public form ={
 		id: null,
 		name: null,
-		user_name: null,
-		key: null,
-		age: null,
+		url: null,
 		id_father: this.get(),
 	}
 
 	public error = " ";
 	public messages = null;
-	public profiles = [];
+	public playlists = [];
 
 	public forms = false;
 
@@ -29,7 +29,7 @@ export class ProfilesComponent implements OnInit {
 
 	constructor(private Jarwis: JarwisService, private router: Router) {
 
-		this.getProfiles();
+		this.getPlaylist();
 	}
 
 	handleError(error){
@@ -37,7 +37,7 @@ export class ProfilesComponent implements OnInit {
 	}
 
 	handleResponse(data){
-		this.profiles = data.profiles;
+		this.playlists = data.playlist;
 	}
 
 	handleResponseMessage(data){
@@ -46,26 +46,25 @@ export class ProfilesComponent implements OnInit {
 
 	delete(event: MouseEvent, id){
 		event.preventDefault();
-		this.Jarwis.delteProfile(id).subscribe(
+		this.Jarwis.deleteVideo(id).subscribe(
 			data => this.handleResponseMessage(data),
 			error => this.handleError(error)
 			);
-		
-		this.getProfiles();
+		//window.location.reload();
 	}
 
-	update($event, profile){
+	update($event, video){
 		event.preventDefault();
-		this.form.name = profile.name;
-		this.form.user_name = profile.user_name;
-		this.form.key = profile.key;
-		this.form.age = profile.age;
-		this.form.id = profile.id;
+		this.form.name = video.name;
+		this.form.url = video.url;
+		this.form.id = video.id;
+		this.form.id_father = video.id_father;
 		this.forms = true;
 	}
 
 	onSubmit(){
-		this.Jarwis.updateProfile(this.form).subscribe(
+		console.log("Update");
+		this.Jarwis.updateVideo(this.form).subscribe(
 			data => this.handleResponseMessage(data),
 			error => this.handleError(error)
 			);
@@ -76,11 +75,11 @@ export class ProfilesComponent implements OnInit {
 	}
 
 	ngOnInit() {
-
+		
 	}
 
-	getProfiles(){
-		this.Jarwis.getProfiles(this.get()).subscribe(
+	getPlaylist(){
+		this.Jarwis.getVideo(this.get()).subscribe(
 			data => this.handleResponse(data),
 			error => this.handleError(error)
 			);

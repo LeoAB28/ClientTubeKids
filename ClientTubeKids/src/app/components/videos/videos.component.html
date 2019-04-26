@@ -1,0 +1,75 @@
+<br>
+<br>
+
+<div class="container" style="display: flex; flex-direction: row; justify-content: space-between; width: 2000px;">
+	<div>
+		<table class="table" style="width: 1000px;" >
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">URL</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let playlist of playlists">
+					<td style="width: 400px;"><h4>{{playlist.name}}</h4></td>
+					<td style="width: 400px;"><h4>{{playlist.url}}</h4></td>
+					<td style="width: 400px;">
+						<div style="display: flex; flex-direction: row; justify-content: flex-end;">
+							<a class="navbar-brand alert-link" (onclick)="delete($event)"><button type="button" (click)="delete($event, 				playlist.id)" class="btn btn-danger" style=""><i class="far fa-trash-alt"></i></button></a>
+
+							<a class="navbar-brand alert-link" (onclick)="update($event)"><button type="button" (click)="update($event, playlist)" class="btn btn-secondary"><i class="fas fa-cog"></i></button></a>
+						</div>  
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<br>
+<br>
+
+
+<form #addForm=ngForm (ngSubmit)="onSubmit()" *ngIf="forms">
+	<div class="mt-4 col-8 offset-2" style="display: flex; flex-direction: row; justify-content: space-between; width: 2000px;">
+		<div class="card">
+			<div class="card-header">Uptade Playlist</div>
+			<div class="card-body">
+
+				<div class="form-inline">
+
+					<div class="form-group row" style="display: flex; flex-direction: column; justify-content: space-between;">
+						<label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text" name="name" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="form.name" required>
+							<div class="alert alert-danger" [hidden]="!error.name">
+								{{error.name}}
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row" style="display: flex; flex-direction: column;">
+						<label for="inputUrl3" class="col-sm-2 col-form-label">URL</label>
+						<div class="col-sm-10">
+							<input type="text" name="url" class="form-control" id="inputurl3" placeholder="Url" [(ngModel)]="form.url" required>
+							<div class="alert alert-danger" [hidden]="!error.url">
+								{{error.url}}
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		<div class="form-group row"  style="display: flex; flex-direction: column;">
+			<div class="col-sm-10 offset-2">
+				<button type="submit"  href="videos" style="height: 50px; width: 150px; margin-left: 20px;" class="btn btn-success">Save</button>
+			</div>
+			<div class="col-sm-10 offset-2">
+				<a style="font-family: Comic Sans MS" href="videos"><button type="button" style="height: 50px; width: 150px; margin-left: 20px;" class="btn btn-danger">Cancel</button></a>
+			</div>
+		</div>
+	</div>
+</form>

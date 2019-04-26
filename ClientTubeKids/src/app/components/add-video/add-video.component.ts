@@ -20,7 +20,6 @@ export class AddVideoComponent implements OnInit {
 	public messages = null;
 
 	constructor(private Jarwis: JarwisService, private router: Router) { }
-
 	get() {
 		return localStorage.getItem('id');
 	}

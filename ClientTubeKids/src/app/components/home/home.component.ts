@@ -34,19 +34,6 @@ export class HomeComponent implements OnInit{
 		this.player.loadVideoById(this.id);
 	}
 
-	delete(id){
-		this.Jarwis.deleteVideo(id).subscribe(
-			data => this.handleResponseMessage(data),
-			error => this.handleError(error)
-			);
-		this.loadVideos();
-	}
-
-
-	handleResponseMessage(data){
-		this.messages = data;
-	}
-
 	handleError(error){
 		this.error = error.error.error;
 	}

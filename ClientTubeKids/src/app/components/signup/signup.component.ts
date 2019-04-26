@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
 
 
 	public error = [];
+	public messages = [];
 
 	constructor(private Jarwis: JarwisService, private Token: TokenService, private router: Router,  private Auth : AuthService) { };
 
@@ -36,12 +37,11 @@ export class SignupComponent implements OnInit {
 			data => this.handleResponse(data),
 			error => this.handleError(error)
 			);
+		this.router.navigateByUrl('/login');
 	}
 
 	handleResponse(data){
-		this.Token.handle(data.access_token, data.id);
-		this.Auth.changeAuthStatus(true);
-		this.router.navigateByUrl('/login');
+		this.messages = data;
 	}
 
 	handleError(error){
